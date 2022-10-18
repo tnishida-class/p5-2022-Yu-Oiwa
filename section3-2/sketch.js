@@ -1,5 +1,5 @@
 // テキスト「アニメーションの基本」
-let x, y, vx, vy;
+let x, y, vx, vy, vy2;
 const g = 1; // 重力加速度
 const vyMax = 30;
 
@@ -9,16 +9,19 @@ function setup(){
   y = height / 2;
   vx = 8;
   vy = 8;
+  vy2 = 100;
 }
 
 function draw(){
   background(160, 192, 255);
   ellipse(x, y, 20, 20);
-  x += vx;
-  y += vy;
+  if(keyIsDown(LEFT_ARROW)){x -= 5}
+  if(keyIsDown(RIGHT_ARROW)){x += 5}
+  //x += vx;
+  //y += vy;
 
   // 重力（コメント機能でオンオフ切り替えて実行してみましょう）
-  vy = constrain(vy + g, -vyMax, vyMax);
+  //vy = constrain(vy + g, -vyMax, vyMax);
 
   // 端の処理パターン (1) 反対側から出てくる
   // if(x > width){ x = 0; }
@@ -33,6 +36,18 @@ function draw(){
   y = constrain(y, 0, height);
 }
 
+function keyPressed(){
+  if(key == " "){
+    y -= vy2;
+  }    
+}
+
+function keyReleased(){
+  if(key == " "){
+    y += vy2;
+  }
+}
+   
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight);
 }
