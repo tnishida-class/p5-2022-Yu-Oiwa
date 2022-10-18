@@ -25,7 +25,7 @@ function draw(){
   ellipse(width / 2, height / 2, size);
   count +=vx
   vx += g
-  vx = constrain(vx, -vxMax, vxMax)
+  vx = constrain(vx+g, -vxMax, vxMax)
   if(count < 100){
     size = count
     }
