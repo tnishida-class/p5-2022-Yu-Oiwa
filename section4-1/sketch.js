@@ -28,6 +28,7 @@ function setup(){
     if(scores[i] > largest){
       largest = scores[i]
     }
+    console.log(largest);
     // BLANK[2]　ヒント：今までの最大値 largest と scores[i] を比較する
   }
 
@@ -36,6 +37,7 @@ function setup(){
     if(scores[i] < smallest){
       smallest = scores[i]
     }
+    console.log(smallest);
     // BLANK[3]　ヒント：最小値とだいたい同じ
   }
 
@@ -48,20 +50,24 @@ function setup(){
   for(let i = 0; i < scores.length; i++){
     const dx = width / scores.length;
     const h = height * scores[i] / 100;
-    if(scores[i] = largest){
+    // BLANK[4] ヒント: 条件分岐を使って色を変更します
+    if(scores[i] == largest){
       fill(255, 0, 0)
     }
-    if(scores[i] = smallest){
+    else if(scores[i] == smallest){
       fill(0, 0, 255)
     }
-    // BLANK[4] ヒント: 条件分岐を使って色を変更します
+    else{
+      fill(128)
+    }
     rect(i * dx + 2, height - h, dx - 4, h);
     fill(0);
     text(scores[i].toPrecision(3), i * dx, height - h);
   }
 
-  if(scores[i] = average){
-    line(0, height - h, width, height - h)
-  }
-  // BLANK[5] 平均点の線を引きます
+  text(average.toPrecision(3), 0, height - height * average / 100);
+  stroke(0, 255, 0)
+  line(0, height - height * average / 100, width, height - height * average / 100);
+  
+  // BLANK[5] 平均点の線を引きます^
 }
