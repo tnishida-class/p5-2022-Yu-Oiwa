@@ -19,6 +19,18 @@ function setup(){
   const dx = width / scores.length;
   let px, py; // 線を引くために一つ前の点を覚えておく変数
   for(let i = 0; i < scores.length; i++){
+    const h = height * scores[i] / 100;
+    if(i == 0){
+      ellipse(dx / 2, h, 10);
+      px = dx / 2;
+      py = h;
+    }
+    else{
+      ellipse(dx * i + dx / 2, height - h, 10)
+      line(dx * i + dx / 2, height - h, px, py)
+      px = dx * i + dx / 2;
+      py = height - h;
+    }
     // BLANK[1]
   }
 }
